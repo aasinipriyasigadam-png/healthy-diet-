@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Healthy Diet Recommender</title>
+  <style>
+    body { font-family: system-ui, Arial; max-width: 900px; margin: 24px auto; padding: 0 16px; color: #222; }
+    h1 { color: #0b6d4a; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input, select, button { padding:8px; margin-top:6px; width:100%; max-width:420px; box-sizing:border-box; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    .pill { display:inline-block; background:#eef6f1; color:#0b6d4a; padding:6px 8px; border-radius:999px; margin:6px 6px 0 0; font-size:0.9em; }
+    .results { margin-top:18px; }
+    .food-card { border:1px solid #e1e8e5; padding:12px; border-radius:8px; margin-bottom:10px; }
+    .reason { font-size:0.95em; color:#444; margin-top:6px; }
+    .small { font-size:0.9em; color:#666; }
+  </style>
+</head>
+<body>
+  <h1>Healthy Diet — Food Suggestions</h1>
+  <p>Enter a few details and get healthy food suggestions tailored to preferences and allergies.</p>
+
+  <form id="prefForm" onsubmit="return false;">
+    <div class="row">
+      <div>
+        <label for="diet">Diet preference</label>
+        <select id="diet">
+          <option value="any">Any</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="pescatarian">Pescatarian</option>
+          <option value="omnivore">Omnivore</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="goal">Goal</label>
+        <select id="goal">
+          <option value="maintenance">Maintenance</option>
+          <option value="weightloss">Weight loss</option>
+          <option value="weightgain">Weight gain</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="calTarget">Daily calorie target (optional)</label>
+    <input id="calTarget" type="number" placeholder="e.g. 2000" />
+
+    <label for="allergies">Allergies / avoid (comma separated)</label>
+    <input id="allergies" type="text" placeholder="e.g. nuts, dairy, gluten" />
+
+    <label>Prefer high in</label>
+    <div class="row" id="macros">
+      <label><input type="checkbox" name="macro" value="protein" /> Protein</label>
+      <label><input type="checkbox" name="macro" value="fiber" /> Fiber</label>
+      <label><input type="checkbox" name="macro" value="healthy_fats" /> Healthy fats</label>
+      <label><input type="checkbox" name="macro" value="carbs" /> Carbohydrates</label>
+    </div>
+
+    <div style="margin-top:12px;">
+      <button id="recommendBtn" type="button">Get suggestions</button>
+    </div>
+  </form>
+
+  <div id="output" class="results"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
